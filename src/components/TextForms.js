@@ -2,41 +2,46 @@ import React,{useState} from "react";
 //Use state use to create state variable.
 export default function TextForms(props) {
   const [text,setText] = useState('');
-    const handleUpClick = () => {
-        // console.log("UpperCase was clicked"+text);
-        let newText=text.toUpperCase();
-        setText(newText);
-    }
-
-    // const [copySuccess, setCopySuccess] = useState(null);
-    const copyClick = async copyMe => {
-       try {
-           await navigator.clipboard.writeText(copyMe);
-           window.alert('Massage copied');
-          //  setText('Copied!');
-       } 
-       catch (err) {
-           setText('Failed to copy!');
-       }
-    };
-
-
-    const clearClick = () => {
-      // console.log("UpperCase was clicked"+text);
-      let newText='';
-      setText(newText);
+  const handleUpClick = () => {
+    // console.log("UpperCase was clicked"+text);
+    let newText=text.toUpperCase();
+    setText(newText);
+    props.showAlert("Converted to UpperCase Sucessfully","success");
   }
-
+  
+  // const [copySuccess, setCopySuccess] = useState(null);
+  const copyClick = async copyMe => {
+    try {
+      await navigator.clipboard.writeText(copyMe);
+      props.showAlert("Copied! to ClipBoard","success");
+      
+      //  setText('Copied!');
+    } 
+    catch (err) {
+      setText('Failed to copy!');
+    }
+  };
+  
+  
+  const clearClick = () => {
+    // console.log("UpperCase was clicked"+text);
+    let newText='';
+    setText(newText);
+    props.showAlert("All Clear","success");
+  }
+  
   const removeExtraSpace = () => {
     // console.log("UpperCase was clicked"+text);
     let newText=text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("All Extra Space removed","success");
 }
     
     const handleLoClick = () => {
         // console.log("UpperCase was clicked"+text);
         let newText=text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to LowerCase Sucessfully","success");
     }
 
     const handleOnChange = (event) => {
@@ -50,7 +55,7 @@ export default function TextForms(props) {
     <div style={{color:props.mode  === 'dark'?'white':'black'}}>
       <h1>{props.heading}</h1>
       <div className=" container my-3" >
-        <textarea className="form-control" id="myBox" rows="8" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode  === 'dark'?'grey':'white',color:props.mode  === 'dark'?'white':'black'}}></textarea>
+        <textarea className="form-control" id="myBox" rows="8" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode  === 'dark'?'grey':'white',color:props.mode  === 'dark'?'white':'black',fontFamily:'Times New Roman'}}></textarea>
 
       </div>
       <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to UpperCase</button>
