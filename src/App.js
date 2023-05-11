@@ -43,7 +43,7 @@ function App() {
       <Alerts alert={alert}/>
       <div className="container">
       <Routes>
-          <Route exact path="/about" element={<About/>}> </Route>
+          <Route exact path="/about" element={<About mode={mode}/>}> </Route>
          
           <Route exact path="/" element={ <TextForms showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>}> </Route>
     </Routes>
