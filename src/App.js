@@ -33,18 +33,19 @@ function App() {
   }
   const toggleMode= (cls)=>{
     removecolor();
+   
     document.body.classList.add('bg-'+cls);
-    if(mode==='light'){
-      setMode('dark');
-      document.body.style.backgroundColor='#042743';
-      showAlert("Enable Dark Mode","success");
+    // if(mode==='light'){
+    //   setMode('dark');
+    //   document.body.style.backgroundColor='#042743';
+    //   showAlert("Enable Dark Mode","success");
 
-    }
-    else{
-      setMode('light');
-      document.body.style.backgroundColor='white';
-      showAlert("Enable Light Mode",'success');
-    }
+    // }
+    // else{
+    //   setMode('light');
+    //   document.body.style.backgroundColor='white';
+    //   showAlert("Enable Light Mode",'success');
+    // }
   }
 
  
